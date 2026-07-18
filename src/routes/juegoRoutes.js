@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import { getJuegos, createJuego, updateJuego, deleteJuego } from '../controller/juegoController.js';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/', getJuegos);
 router.post('/', createJuego);

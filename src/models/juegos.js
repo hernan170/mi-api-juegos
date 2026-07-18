@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
+const juegoCollection = 'juegos';
+
 const juegosSchema = new mongoose.Schema({
     titulo: { type: String, required: true, trim: true },
-    año: { type: Number, required: true },
-    imagen: { type: String }
+    anio: { type: Number, required: true },
+    imagen: { type: String, default: null }
 });
 
-export default mongoose.model('Juego', juegosSchema);
+export const juegoModel = mongoose.model(juegoCollection, juegosSchema);

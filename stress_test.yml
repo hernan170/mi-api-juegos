@@ -1,0 +1,18 @@
+config:
+  target: "http://localhost:8080" # La URL de tu servidor Express local
+  phases:
+    - duration: 60          # El test va a durar 60 segundos
+      arrivalRate: 10       # Empieza enviando 10 usuarios nuevos por segundo
+      rampTo: 50            # Sube la intensidad de forma lineal hasta meter 50 usuarios nuevos por segundo
+      name: "Fase de Estrés Intenso"
+scenarios:
+  - name: "Flujo completo de un usuario en la plataforma"
+    flow:
+      - get:
+          url: "/api/juegos"
+      - post:
+          url: "/api/juegos"
+          json:
+            titulo: "Juego de Estrés"
+            anio: 2026
+            imagen: "http://link.com/foto.jpg"

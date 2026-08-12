@@ -12,13 +12,21 @@
     "test": "mocha test/**/*.test.js --timeout 10000"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongo": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "2.8.6",
     "dotenv": "17.4.2",
     "express": "4.19.2",
     "express-compression": "1.0.2",
-    "mongoose": "8.4.1",
+    "express-session": "^1.19.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.4.1",
     "node-fetch": "3.3.2",
     "nodemon": "3.1.14",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-local": "^1.0.0",
     "winston": "3.19.0"
   },
   "devDependencies": {

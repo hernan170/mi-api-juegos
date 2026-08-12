@@ -1,22 +1,24 @@
 import winston from 'winston';
 
-
 const customLevelsOptions = {
     levels: {
         fatal: 0,
         error: 1,
-        warn: 2,
+        warning: 2,
         info: 3,
-        debug: 4
+        http: 4,
+        debug: 5
     },
     colors: {
         fatal: 'red',
         error: 'magenta',
-        warn: 'yellow',
+        warning: 'yellow',
         info: 'blue',
+        http: 'green',
         debug: 'white'
     }
 };
+
 
 const devLogger = winston.createLogger({
     levels: customLevelsOptions.levels,
@@ -30,6 +32,7 @@ const devLogger = winston.createLogger({
         })
     ]
 });
+
 
 const prodLogger = winston.createLogger({
     levels: customLevelsOptions.levels,
@@ -50,3 +53,10 @@ const prodLogger = winston.createLogger({
 });
 
 export const logger = process.env.NODE_ENV === 'production' ? prodLogger : devLogger;
+
+
+export const addLogger = (req, res, next) => {
+    req.logger = logger;
+    req.logger.http(`${req.method} en ${req.url} - ${new Date().toLocaleTimeString()}`);
+    next();
+};
